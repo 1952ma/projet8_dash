@@ -3,6 +3,8 @@ name: Deploy to EC2
 on:
   push:
     branches: [ main ]  # Déclenche le workflow sur les push vers la branche main
+    paths:
+      - '**'  # Se déclenche pour tout changement dans le dépôt
 
 jobs:
   deploy:
@@ -27,14 +29,15 @@ jobs:
     # Étape 3 : Se connecter et déployer sur l'instance EC2
     - name: Deploy to EC2
       env:
-        HOST: ec2-54-160-219-241.compute-1.amazonaws.com  # Adresse IP publique de votre instance EC2
-        USERNAME: ec2-user  # Utilisateur correct
+        HOST: ec2-54-160-219-241.compute-1.amazonaws.com  # Adresse IP publique de l'instance EC2
+        USERNAME: ubuntu  # Utilisateur 
       run: |
         ssh -i ~/.ssh/github-action $USERNAME@$HOST '
-          cd ~/projet8_dash  # Accède à la racine du projet
+          cd ~/projet8_dash  # Accède à la racine de ton projet
           git pull  # Met à jour le code depuis GitHub
           cd mep_dash  # Accède au sous-dossier mep_dash
           docker-compose down  # Arrête les conteneurs existants
-          docker-compose up   # Redémarre les conteneurs en mode détaché
+          docker-compose up   # Redémarre les conteneurs 
         '
+
 
