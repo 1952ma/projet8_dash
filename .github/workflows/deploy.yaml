@@ -31,4 +31,6 @@ jobs:
           script: |
             cd /home/ubuntu/projet8_dash  
             git pull origin main  # Mettre à jour avec la dernière version du dépôt
-
+            cd mep_dash # Accède au sous-dossier mep_dash
+            #docker-compose down # Arrête les conteneurs existants
+            #docker-compose up   # Redémarre les conteneurs en mode détaché
