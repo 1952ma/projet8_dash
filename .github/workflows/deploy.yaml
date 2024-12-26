@@ -3,17 +3,15 @@ name: Deploy to EC2
 on:
   push:
     branches: [ main ]         # Déclenche le workflow sur les push vers la branche main
-    
+    paths:
+      - 'mep_dash/**'               # Se déclenche uniquement si des fichiers dans le dossier mep sont modifiés
+
 jobs:
   deploy:
     runs-on: ubuntu-latest     # Utilise une machine virtuelle Ubuntu GitHub Runner
     
     steps:
-    # Étape 1 : Checkout du code
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    # Étape 2 : Configurer SSH
+    # Étape 1 : Configurer SSH
     - name: Configure SSH
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -24,15 +22,14 @@ jobs:
         chmod 600 ~/.ssh/github-action
         echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
 
-    # Étape 3 : Se connecter et déployer sur l'instance EC2
+    # Étape 2 : Se connecter et déployer sur l'instance EC2
     - name: Deploy to EC2
       env:
-        HOST: ec2-54-160-219-241.compute-1.amazonaws.com # Adresse IP publique de l'instance EC2
+        HOST: ec2-54-160-219-241.compute-1.amazonaws.com # Adresse IP publique de votre instance EC2
         USERNAME: ec2-user                               # Utilisateur 
       run: |
         ssh -i ~/.ssh/github-action $USERNAME@$HOST '
-          cd projet8_dash              # Accède au dossier de l'application
-          git pull                         # Met à jour le code depuis GitHub
-          docker-compose down              # Arrête les conteneurs existants
-          docker-compose up                # Redémarre les conteneurs en mode détaché
+          git pull                           # Met à jour le code depuis GitHub
+          docker compose down                # Arrête les conteneurs existants
+          docker compose up                  # Redémarre les conteneurs 
         '
