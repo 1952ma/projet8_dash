@@ -1,43 +1,34 @@
-name: Deploy to EC2
+name: Deploy to AWS EC2
 
 on:
   push:
-    branches: [ main ]  # Déclenche le workflow sur les push vers la branche main
-    paths:
-      - '**'  # Se déclenche pour tout changement dans le dépôt
+    branches:
+      - main  
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Utilise une machine virtuelle Ubuntu GitHub Runner
-    
+    runs-on: ubuntu-latest  # Utilise un runner GitHub Actions basé sur Ubuntu
+
     steps:
-    # Étape 1 : Checkout du code
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v4  # Récupère le code source
 
-    # Étape 2 : Configurer SSH
-    - name: Configure SSH
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        KNOWN_HOSTS: ${{ secrets.KNOWN_HOSTS }}
-      run: |
-        mkdir -p ~/.ssh/
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/github-action
-        chmod 600 ~/.ssh/github-action
-        echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+      - name: Deploy to EC2
+        uses: appleboy/scp-action@master  # Utilise l'action pour copier des fichiers via SCP
+        with:
+          host: ec2-54-160-219-241.compute-1.amazonaws.com  # Remplacez par l'adresse de l'instance EC2
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  # La clé privée SSH, à ajouter comme secret dans le dépôt GitHub
+          source: "."  # Tous les fichiers du projet
+          target: "/home/ubuntu/projet8_dash"  # Répertoire cible sur l'EC2
 
-    # Étape 3 : Se connecter et déployer sur l'instance EC2
-    - name: Deploy to EC2
-      env:
-        HOST: ec2-54-160-219-241.compute-1.amazonaws.com  # Adresse IP publique de l'instance EC2
-        USERNAME: ubuntu  # Utilisateur 
-      run: |
-        ssh -i ~/.ssh/github-action $USERNAME@$HOST '
-          cd ~/projet8_dash  # Accède à la racine de ton projet
-          git pull  # Met à jour le code depuis GitHub
-          cd mep_dash  # Accède au sous-dossier mep_dash
-          docker-compose down  # Arrête les conteneurs existants
-          docker-compose up   # Redémarre les conteneurs 
-        '
-
+      - name: Execute Remote Commands
+        uses: appleboy/ssh-action@master  # Utilise l'action pour exécuter des commandes SSH
+        with:
+          host: ec2-54-160-219-241.compute-1.amazonaws.com # Remplacez par l'adresse de l'instance EC2
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/ubuntu/projet8_dash  
+            git pull origin main  # Mettre à jour avec la dernière version du dépôt
 

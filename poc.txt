@@ -1,0 +1,151 @@
+Note Méthodologique : EffecientNet
+Preuve de Concept 
+Dataset retenu 
+Le dataset utilisé pour ce concept est ImageNet qui contient plus de 1,2 million d’images labellisées dans 1 000 classes distinctes. 
+Caractéristiques du Dataset :
+Taille des images : les images varient en résolution, mais elles sont redimensionnées à 224x224 pixels pour être compatibles avec le modèle.
+Classes : inclut des catégories variées comme les animaux, les objets, les véhicules …
+Format : images RGB en trois canaux (Rouge, Vert, Bleu).
+Les concepts de l’algorithme récent 
+EfficientNet est une famille de modèles de réseaux neuronaux convolutifs (CNN) utilisés pour des tâches de vision par ordinateur, comme la classification d'images, la détection d'objets, et la segmentation.
+EfficientNet a été conçu pour être plus efficace en termes de précision et de vitesse d'exécution tout en utilisant moins de ressources (comme la mémoire ou la puissance de calcul). Il utilise des techniques avancées pour optimiser l'architecture du réseau.
+Les deux concepts clés derrière EfficientNet :
+Scaling efficace :
+EfficientNet utilise une méthode appelée Compound Scaling, qui équilibre trois aspects d'un modèle CNN :
+- La profondeur (nombre de couches du réseau).
+- La largeur (nombre de canaux dans chaque couche).
+- La résolution (taille des images d'entrée).
+Cela permet de créer des versions du modèle adaptées à différents niveaux de ressources (petits modèles pour des appareils mobiles, grands modèles pour des serveurs).
+Bloc MBConv :
+Il utilise des blocs MBConv (Mobile Inverted Bottleneck Convolution) pour rendre les calculs plus rapides et plus efficaces.
+EfficientNet utilise une variante modifiée de MobileNetV2 comme backbone, incluant des blocs inversés et des connexions résiduelles pour améliorer l’efficacité.
+Fonctionnalités clés :
+Squeeze-and-Excitation Blocks : ils réduisent les coûts en canaux tout en améliorant l’apprentissage des caractéristiques essentielles.
+Efficient Swish Activation : une fonction d’activation optimisée pour des calculs plus rapides.
+L’architecture:
+1. Input Image (Image d'entrée) :
+L'image d'entrée a une taille de 224x224 pixels et 3 canaux (correspondant aux couleurs Rouge, Vert, Bleu - RGB).
+Cette image est le point de départ du traitement dans le réseau.
+2. Conv 3x3 :
+Convolution 3x3 : C'est la première couche convolutive du réseau.
+Elle applique un filtre de convolution de taille 3x3 pour extraire des caractéristiques simples (comme les bords ou les textures).
+3. MBConv (Mobile Inverted Bottleneck Convolution) :
+MBConv est un bloc convolutif spécial utilisé dans EfficientNet. Il est basé sur les blocs introduits par MobileNetV2: 
+- MBConv1 3x3 :
+- C'est un bloc MBConv simple.
+- Il ne change pas beaucoup la taille des données internes (facteur d'expansion = 1).
+- Il utilise un petit "filtre" de 3x3 pour analyser l'image.
+- MBConv6 3x3 :
+- Ce bloc augmente beaucoup la taille des données internes (facteur d'expansion = 6).
+- Il utilise aussi un "filtre" de 3x3, mais il extrait plus de détails grâce à l'expansion.
+- MBConv6 5x5 :
+- Similaire au précédent, il augmente beaucoup les données internes (facteur d'expansion = 6).
+- Il utilise un "filtre" plus grand de 5x5, ce qui lui permet de capturer des informations sur une zone plus large de l'image.
+
+Fonctionnement des MBConv :
+Expansion : Les dimensions des canaux sont augmentées.
+Depthwise Convolution : Une convolution est appliquée séparément sur chaque canal.
+Projection : Les dimensions sont réduites pour revenir à une taille plus compacte.
+Résidu : Un lien direct (skip connection) est ajouté si possible.
+4. Couleurs des blocs MBConv :
+Les blocs sont colorés différemment pour indiquer des tailles de noyaux et des facteurs d'expansion variés :
+Bleu clair : MBConv1 3x3.
+Bleu foncé : MBConv6 3x3.
+Vert : MBConv6 5x5.
+Jaune : MBConv6 3x3.
+Gris : MBConv6 5x5.
+5. Feature Map (Carte de caractéristiques) :
+À la fin du réseau, la sortie est une carte de caractéristiques de taille 7x7x320.
+Cette carte contient les informations extraites par les différentes couches convolutives, prêtes à être utilisées pour une tâche spécifique (par exemple, classification).
+La modélisation
+effectue les étapes suivantes pour entraîner et évaluer deux modèles de classification d'images (EfficientNetB0 et VGG16) sur un ensemble de données d'images :
+Chargement des données :
+- Charge un fichier CSV contenant des chemins d'images et leurs classes associées.
+- Prépare les images et les labels, et divise les données en ensembles d'entraînement et de validation.
+Prétraitement des images :
+- Définit une fonction pour charger et redimensionner les images, tout en appliquant une normalisation spécifique au modèle EfficientNet.
+Création des datasets :
+- Utilise TensorFlow pour créer des datasets optimisés (batches, préchargement, parallélisme) à partir des images et labels.
+Construction des modèles :
+- Définit une fonction pour construire un modèle de classification basé sur un modèle pré-entraîné (EfficientNetB0 ou VGG16).
+- Ajoute des couches personnalisées pour l'adaptation aux données spécifiques.
+- Fige les poids du modèle de base pour utiliser ses caractéristiques pré-apprises.
+Entraînement des modèles :
+- Entraîne les modèles sur les données d'entraînement et valide leur performance à chaque époque.
+- Mesure le temps d'entraînement pour chaque modèle.
+Évaluation des modèles :
+Prédit les classes des images de validation et calcule les métriques suivantes :
+- Matrice de confusion.
+- Rapport de classification (précision, rappel, F1-score).
+- ARI (Adjusted Rand Index) pour mesurer la similarité des clusters.
+Visualisation des performances :
+- Trace les courbes d'évolution de la précision sur les ensembles d'entraînement et de validation.
+Comparaison des modèles :
+- Compare les performances et les temps d'entraînement des deux modèles (EfficientNetB0 et VGG16).
+Mon code est conçu pour automatiser l'ensemble du processus d'entraînement, d'évaluation et de comparaison des modèles de classification d'images
+Le graphique montre les performances du modèle EfficientNet en termes de précision d'entraînement (ligne bleue) et de validation (ligne orange) au fil des époques.
+ Une synthèse des résultats
+Voici une interprétation des résultats :
+Précision d'entraînement élevée :
+- La précision d'entraînement augmente rapidement et atteint presque 100 % après quelques époques. Cela indique que le modèle s'adapte bien aux données d'entraînement.
+Précision de validation stable mais inférieure :
+- La précision de validation augmente initialement, mais elle reste inférieure à celle de l'entraînement et semble osciller légèrement après la quatrième époque.
+- Cette différence entre les deux courbes pourrait indiquer un surapprentissage (overfitting), où le modèle s'adapte trop fortement aux données d'entraînement et généralise moins bien aux nouvelles données.
+Oscillations dans la validation :
+- Les fluctuations de la précision de validation après certaines époques peuvent être dues à une petite taille de l'ensemble de validation ou à des variations aléatoires dans les données.
+Améliorations potentielles :
+- Régularisation : Ajouter davantage de régularisation (comme une augmentation du dropout ou une pondération L2).
+- Augmentation des données : Si possible, augmenter les données d'entraînement pour améliorer la généralisation.
+- Réduction des époques : Entraîner le modèle sur moins d'époques pour éviter le surapprentissage.
+En résumé, le modèle semble bien apprendre les données d'entraînement, mais une attention particulière est nécessaire pour améliorer la généralisation sur les données de validation
+Les limites et les améliorations possibles
+Limites d’EfficientNet (selon les résultats obtenus) :
+Sursaturation du modèle (Overfitting) :
+
+La précision sur l’ensemble d'entraînement atteint 100 % très rapidement, ce qui suggère que le modèle s'adapte parfaitement aux données d'entraînement.
+Cependant, la précision sur l'ensemble de validation reste inférieure (~95 %) et fluctue, indiquant une généralisation imparfaite.
+Dépendance à la qualité des données :
+
+EfficientNet repose fortement sur des données bien étiquetées et équilibrées. Si les données sont biaisées ou déséquilibrées, cela peut affecter les performances.
+Complexité computationnelle :
+
+Bien qu’EfficientNet soit optimisé pour l’efficacité, il reste un modèle complexe nécessitant des ressources matérielles importantes (GPU/TPU), surtout pour des jeux de données volumineux.
+Fluctuations dans la précision de validation :
+
+Les résultats montrent des variations dans la précision de validation au fil des époques, ce qui peut être le signe de surapprentissage ou d'une instabilité dans l'optimisation.
+Temps d’entraînement :
+
+Malgré son efficacité relative, l’entraînement reste plus long que des modèles plus simples (bien que plus rapide que VGG16).
+Améliorations possibles pour EfficientNet :
+Augmentation des données (Data Augmentation) :
+
+Utiliser des techniques comme la rotation, le recadrage, le bruit, ou le changement de luminosité pour augmenter la diversité des données et réduire le surapprentissage.
+Réglage des hyperparamètres :
+
+Réduire le taux d’apprentissage (learning rate) pour stabiliser l’entraînement.
+Ajuster le taux de régularisation ou augmenter le dropout pour limiter l'overfitting.
+Fine-tuning des couches profondes :
+
+Actuellement, seules les couches supérieures du modèle sont entraînées. En débloquant certaines couches profondes d’EfficientNet (fine-tuning), on pourrait améliorer les performances.
+Early Stopping :
+
+Mettre en place un arrêt anticipé basé sur la précision de validation pour éviter l'overfitting tout en réduisant le temps d'entraînement.
+Ensembles de modèles (Ensembling) :
+
+Combiner les prédictions d’EfficientNet avec celles d’autres modèles (comme VGG16 ou ResNet) pour améliorer la robustesse et la précision globale.
+Utilisation d’un optimiseur avancé :
+
+Tester des optimiseurs comme AdamW ou SGD avec momentum, qui peuvent offrir de meilleures performances pour certains jeux de données.
+Réduction de la taille du modèle (pruning) :
+
+Si les ressources sont limitées, appliquer des techniques de compression comme le pruning pour réduire la taille du modèle tout en maintenant ses performances.
+Validation croisée (Cross-validation) :
+
+Réaliser une validation croisée pour évaluer le modèle sur plusieurs sous-ensembles des données et obtenir des performances plus robustes.
+Utilisation d'une version plus avancée d’EfficientNet :
+
+Tester des variantes comme EfficientNetV2, qui sont conçues pour être encore plus rapides et performantes sur des données modernes.
+Analyse des erreurs :
+
+Étudier les exemples mal classés pour identifier des biais potentiels dans les données ou des classes particulièrement difficiles à distinguer.
+En appliquant ces améliorations, EfficientNet pourrait offrir des performances encore plus robustes et adaptées à votre jeu de données, tout en réduisant les risques de surapprentissage.
