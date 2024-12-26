@@ -3,8 +3,6 @@ name: Deploy to EC2
 on:
   push:
     branches: [ main ]  # Déclenche le workflow sur les push vers la branche main
-    paths:
-      - 'projet8_dash/**'  # Se déclenche pour tout changement dans le dossier projet8_dash
 
 jobs:
   deploy:
