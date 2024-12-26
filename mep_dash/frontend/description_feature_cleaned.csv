@@ -1,0 +1,101 @@
+Feature, Description
+EXT_SOURCE_2 ," Source externe 2 : Représente une mesure issue d'une source externe utilisée pour évaluer la solvabilité du client. Souvent ce type de feature est basé sur des données financières ou socio,démographiques."
+EXT_SOURCE_1 ," Source externe 1 : Similarité avec EXT_SOURCE_2 cette feature est une mesure provenant d'une autre source externe. Elle aide à quantifier la capacité du client à rembourser."""
+EXT_SOURCE_3 , Source externe 3 : Une autre mesure issue d'une troisième source externe servant d'indicateur supplémentaire pour la solvabilité.
+PAYMENT_RATE , Taux de paiement : Montre le ratio de paiement des dettes passées ce qui reflète le comportement du client en matière de remboursement.
+DAYS_EMPLOYED , Nombre de jours d'emploi : Reflète la stabilité financière d_un client en fonction du nombre de jours passés dans un emploi.
+INSTAL_DPD_MEAN , Moyenne des paiements en retard pour les installations : Indique la performance historique de paiements dans le cadre des crédits.
+AMT_ANNUITY , Montant de l_annuité : Montant payé mensuellement pour une dette comme un crédit ou un prêt exprimé en monnaie.
+DAYS_BIRTH , Âge du client : Calculé en jours à partir de la date de naissance jusqu_à la date de l_enquête.
+INSTAL_AMT_PAYMENT_SUM , Somme des paiements d'installations : Regroupe les paiements effectués pour différentes installations de crédits.
+CODE_GENDER , Code du genre : Indique le genre du client généralement représenté par des chiffres (par exemple 1 pour homme 2 pour femme).
+INSTAL_AMT_PAYMENT_MIN , Paiement minimum d'installation : Valeur minimale payée pour une installation spécifique.
+PREV_CNT_PAYMENT_MEAN , Moyenne des paiements précédents : Calcul de la performance historique de paiements passés.
+AMT_CREDIT , Montant du crédit : Montant total du crédit ou du prêt accordé au client.
+ACTIVE_DAYS_CREDIT_MAX , Nombre maximal de jours actifs sur un crédit : Reflète la durée de vie du crédit actif.
+OWN_CAR_AGE , Âge de la voiture : Représente l'âge de la voiture détenue par le client.
+INSTAL_DAYS_ENTRY_PAYMENT_MEAN , Moyenne des jours de paiement pour les installations : Indicateur de la régularité des paiements.
+APPROVED_CNT_PAYMENT_MEAN , Moyenne des paiements approuvés : Indicateur de la capacité du client à approuver les paiements sur ses dettes.
+AMT_GOODS_PRICE , Montant du prix des biens : Valeur monétaire des biens ou services achetés avec des crédits ou des prêts.
+ANNUITY_INCOME_PERC , Ratio d_annuité par rapport au revenu : Pourcentage du revenu alloué à l_annuité des paiements.
+NAME_EDUCATION_TYPE_Higher_education , Type d'éducation supérieure : Décrit le niveau d_éducation supérieur atteint par le client.
+POS_MONTHS_BALANCE_SIZE , Taille du solde des mois POS : Reflète l_historique de transactions et la gestion des soldes pour une carte ou un compte.
+INSTAL_DAYS_ENTRY_PAYMENT_MAX , Maximum des jours de paiement pour les installations : Valeur maximale des jours où le client a effectué des paiements.
+APPROVED_AMT_DOWN_PAYMENT_MAX , Maximum des montants de paiement initial approuvé : Valeur maximale des paiements initiaux approuvés.
+POS_SK_DPD_DEF_MEAN , Moyenne des paiements en retard pour les transactions POS : Performance historique des paiements pour les transactions POS.
+PREV_APP_CREDIT_PERC_MIN , Pourcentage minimum du crédit appuyé précédemment : Proportion minimale de crédit approuvé sur des applications précédentes.
+DAYS_EMPLOYED_PERC , Pourcentage de jours d_emploi : Reflète la stabilité professionnelle du client en pourcentage.
+INSTAL_PAYMENT_PERC_MEAN , Moyenne du pourcentage de paiements d'installations : Indicateur de la régularité des paiements.
+BURO_AMT_CREDIT_MAX_OVERDUE_MEAN , Moyenne des montants de crédit les plus en retard dans le bureau : Valeur moyenne des montants en retard sur les crédits au bureau.
+PREV_NAME_CONTRACT_STATUS_Refused_MEAN , Moyenne des refus de contrats précédents : Indicateur du nombre moyen de contrats refusés.
+BURO_DAYS_CREDIT_MAX , Maximum des jours de crédit dans le bureau : Durée maximale pendant laquelle un crédit est en cours dans le bureau.
+PREV_APP_CREDIT_PERC_MEAN , Moyenne du pourcentage de crédit approuvé précédemment : Proportion moyenne de crédit approuvé sur des applications précédentes.
+ACTIVE_DAYS_CREDIT_ENDDATE_MEAN , Moyenne des jours actifs jusqu_à la fin du crédit : Durée moyenne pendant laquelle le crédit est actif.
+ACTIVE_AMT_CREDIT_MAX_OVERDUE_MEAN , Moyenne des montants de crédit les plus en retard avec des montants maximaux : Valeur maximale en retard sur les crédits.
+BURO_CREDIT_TYPE_Microloan_MEAN , Moyenne des crédits de type microprêt : Représente la gestion des microprêts au bureau.
+BURO_AMT_CREDIT_SUM_MAX , Maximum des montants de crédit : Valeur maximale des montants de crédit.
+NAME_CONTRACT_TYPE_Cash_loans ," Type de contrat : Prêts en argent. Reflète un contrat spécifique de ce type."""
+PREV_NAME_YIELD_GROUP_high_MEAN , Moyenne du groupe de rendement élevé : Proportion des groupes de rendement élevés pour les applications précédentes.
+ACTIVE_DAYS_CREDIT_ENDDATE_MAX , Maximum des jours actifs jusqu_à la fin du crédit : Valeur maximale des jours actifs jusqu'à la fin du crédit.
+BURO_AMT_CREDIT_SUM_DEBT_MEAN , Moyenne des montants de crédit dus : Valeur moyenne des montants dus sur les crédits.
+CLOSED_AMT_CREDIT_SUM_SUM , Somme des montants de crédits fermés : Montant total des crédits fermés.
+INSTAL_PAYMENT_DIFF_MEAN , Moyenne de la différence de paiement pour les installations : Reflète les variations des paiements.
+BURO_CREDIT_ACTIVE_Closed_MEAN , Moyenne des crédits fermés : Proportion des crédits fermés dans le bureau.
+INSTAL_AMT_PAYMENT_MEAN , Moyenne des paiements d'installations : Montant moyen des paiements effectués pour les crédits.
+INSTAL_DAYS_ENTRY_PAYMENT_SUM , Somme des jours de paiement pour les installations : Valeur globale des jours de paiements.
+BURO_DAYS_CREDIT_MEAN , Moyenne des jours de crédit dans le bureau : Durée moyenne des crédits dans le bureau.
+INSTAL_DBD_SUM , Somme des soldes débiteurs : Reflète les montants dus sur les crédits.
+FLAG_DOCUMENT_3 , Indicateur de document : Un flag binaire indiquant la présence ou non d'un document spécifique (3).
+BURO_CREDIT_TYPE_Mortgage_MEAN , Moyenne des crédits hypothécaires : Indicateur spécifique des crédits hypothécaires.
+NAME_FAMILY_STATUS_Married , Statut familial marié : Indique si le client est marié ou non.
+REGION_RATING_CLIENT_W_CITY , Classification de la région avec la ville : Indicateur de la notation régionale tenant compte de la ville.
+POS_MONTHS_BALANCE_MAX , Maximum du solde des mois POS : Valeur maximale des transactions au cours des mois.
+ACTIVE_AMT_CREDIT_SUM_LIMIT_MEAN , Moyenne des montants de crédit disponibles sur limite : Représente la capacité de crédit maximale utilisée.
+DAYS_LAST_PHONE_CHANGE , Dernier changement de téléphone : Nombre de jours écoulés depuis le dernier changement de numéro de téléphone.
+DAYS_ID_PUBLISH , Nombre de jours depuis la publication de l'identité : Indicateur de l'ancienneté de l'identité.
+ACTIVE_DAYS_CREDIT_MEAN , Moyenne des jours actifs sur le crédit : Durée moyenne pendant laquelle le crédit est actif.
+PREV_NAME_PRODUCT_TYPE_walk_in_MEAN , Moyenne du type de produit pour les applications faites en personne : Gestion des produits appliqués en personne précédemment.
+BURO_AMT_CREDIT_SUM_SUM , Somme des montants de crédit dans le bureau : Montant total des crédits dans le bureau.
+PREV_NAME_YIELD_GROUP_low_normal_MEAN , Moyenne du groupe de rendement bas normal : Proportion des groupes de rendement bas pour les applications précédentes.
+PREV_NAME_YIELD_GROUP_low_action_MEAN , Moyenne du groupe de rendement bas action : Proportion des groupes bas action pour les applications précédentes.
+BURO_CREDIT_ACTIVE_Active_MEAN , Moyenne des crédits actifs : Proportion des crédits actifs dans le bureau.
+APPROVED_AMT_ANNUITY_MEAN , Moyenne du montant de l'annuité approuvée : Valeur moyenne des montants d_annuité approuvés.
+BURO_DAYS_CREDIT_ENDDATE_MEAN , Moyenne des jours de crédit jusqu_à la fin : Représente la durée moyenne jusqu_à la fin du crédit dans le bureau.
+INSTAL_AMT_INSTALMENT_MAX , Maximum des montants d_installments : Valeur maximale des paiements d_installations.
+INCOME_CREDIT_PERC , Ratio revenu/credit : Pourcentage du revenu utilisé pour le remboursement du crédit.
+INSTAL_AMT_INSTALMENT_SUM , Somme des paiements d_installments : Valeur globale des paiements d_installments.
+INSTAL_PAYMENT_DIFF_SUM , Somme de la différence de paiement pour les installations : Variations globales des paiements.
+PREV_NAME_CONTRACT_STATUS_Approved_MEAN , Moyenne des contrats approuvés précédents : Proportion des contrats approuvés pour les applications précédentes.
+REFUSED_APP_CREDIT_PERC_MIN , Pourcentage minimum de crédit refusé : Valeur minimale du pourcentage de crédits refusés sur des applications.
+NAME_EDUCATION_TYPE_Secondary_secondary_special , Type d_éducation secondaire/spécialisée : Représente un niveau d_éducation spécifique.
+CLOSED_AMT_CREDIT_SUM_MAX , Maximum des montants de crédit fermés : Valeur maximale des crédits fermés.
+PREV_PRODUCT_COMBINATION_Cash_X_Sell_low_MEAN , Moyenne des combinaisons de produits crédit/cash avec faible rendement : Proportion des combinaisons de produits avec rendement bas.
+REFUSED_DAYS_DECISION_MAX , Maximum des jours de décision refusés : Indicateur des jours écoulés entre la demande et le refus.
+DEF_30_CNT_SOCIAL_CIRCLE , Nombre de défauts dans le cercle social : Nombre de défauts observés auprès du cercle social du client.
+BURO_STATUS_1_MEAN_MEAN , Moyenne du statut de crédit 1 dans le bureau : Indicateur de l'état moyen des crédits avec le statut 1 dans le bureau.
+ACTIVE_DAYS_CREDIT_ENDDATE_MIN , Minimum des jours actifs jusqu_à la fin du crédit : Durée minimale des jours actifs jusqu_à la fin du crédit.
+APPROVED_APP_CREDIT_PERC_MAX , Maximum du pourcentage de crédit approuvé : Valeur maximale du pourcentage de crédits approuvés.
+CLOSED_DAYS_CREDIT_VAR , Variance des jours de crédit fermés : Indicateur de la variabilité des jours de crédit fermés.
+CLOSED_AMT_CREDIT_MAX_OVERDUE_MEAN , Moyenne des montants de crédit fermés avec retard maximal : Valeur moyenne des montants de crédit fermés avec retard maximal.
+CLOSED_AMT_CREDIT_SUM_MEAN , Moyenne des montants de crédit fermés : Valeur moyenne des montants de crédit fermés.
+POS_COUNT , Compte des POS : Représente le nombre de transactions POS enregistrées.
+PREV_AMT_DOWN_PAYMENT_MAX , Maximum des montants de paiement initial précédents : Valeur maximale des paiements initiaux précédents.
+INSTAL_AMT_PAYMENT_MAX , Maximum des montants de paiements d'installments : Valeur maximale des paiements d_installments.
+REFUSED_DAYS_DECISION_MEAN , Moyenne des jours de décision refusés : Représente la durée moyenne entre la demande et le refus.
+ACTIVE_AMT_CREDIT_SUM_OVERDUE_MEAN , Moyenne des montants de crédit en retard : Valeur moyenne des montants de crédits en retard.
+ACTIVE_AMT_CREDIT_SUM_MAX , Montant maximal du crédit actif : Valeur maximale des montants de crédits actifs.
+CLOSED_DAYS_CREDIT_MAX , Maximum des jours de crédit fermés : Durée maximale des crédits fermés.
+INSTAL_DPD_MAX , Maximum des paiements en retard d_installments : Valeur maximale des paiements en retard pour les crédits.
+BURO_AMT_CREDIT_SUM_MEAN , Moyenne des montants de crédit dans le bureau : Valeur moyenne des montants de crédit au bureau.
+PREV_NAME_GOODS_CATEGORY_Furniture_MEAN , Moyenne des catégories de biens meubles : Représente les biens meubles dans les catégories précédemment utilisés.
+ACTIVE_AMT_CREDIT_SUM_DEBT_MEAN , Moyenne des montants de crédit en dette : Valeur moyenne des montants dus sur les crédits actifs.
+POS_MONTHS_BALANCE_MEAN , Moyenne du solde des mois POS : Valeur moyenne des transactions au cours des mois pour les POS.
+PREV_DAYS_DECISION_MIN , Minimum des jours de décision précédents : Valeur minimale des jours écoulés entre la demande et la décision précédente.
+DAYS_REGISTRATION , Nombre de jours depuis l_enregistrement : Durée écoulée depuis l_enregistrement du client.
+PREV_PRODUCT_COMBINATION_POS_industry_with_interest_MEAN , Moyenne des combinaisons de produits dans l_industrie avec intérêt : Proportion des combinaisons dans l_industrie avec intérêt.
+TOTALAREA_MODE , Superficie totale : Représente la superficie totale d_un bien ou d_une entité.
+APPROVED_APP_CREDIT_PERC_MIN , Minimum du pourcentage de crédit approuvé : Valeur minimale du pourcentage de crédit approuvé.
+OCCUPATION_TYPE_Core_staff , Type d_occupation : Reflète la classification de l_occupation comme le personnel de base.
+POS_NAME_CONTRACT_STATUS_Active_MEAN , Moyenne du statut de contrat POS actif : Représente la proportion des statuts de contrat POS actifs.
+APPROVED_DAYS_DECISION_MAX , Maximum des jours de décision approuvés : Valeur maximale des jours écoulés pour une décision approuvée.
+PREV_HOUR_APPR_PROCESS_START_MEAN , Moyenne des heures de début du processus d_approbation : Représente la durée moyenne entre le début du processus et l_approbation.
