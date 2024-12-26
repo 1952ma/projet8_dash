@@ -1,6 +1,6 @@
 # uvicorn fastapi_app:app --reload 
 
-#2 -puis  http://127.0.0.1:8000/clients
+#  http://127.0.0.1:8000/clients
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel

@@ -3,8 +3,6 @@ name: Deploy to EC2
 on:
   push:
     branches: [ main ]         # Déclenche le workflow sur les push vers la branche main
-    paths:
-      - 'mep_dash/**'          # Se déclenche uniquement si des fichiers dans le dossier mep_dash sont modifiés
     
 jobs:
   deploy:
@@ -33,7 +31,7 @@ jobs:
         USERNAME: ec2-user                               # Utilisateur 
       run: |
         ssh -i ~/.ssh/github-action $USERNAME@$HOST '
-          cd ~/dash/mep_dash               # Accède au dossier de l'application
+          cd projet8_dash              # Accède au dossier de l'application
           git pull                         # Met à jour le code depuis GitHub
           docker-compose down              # Arrête les conteneurs existants
           docker-compose up                # Redémarre les conteneurs en mode détaché
