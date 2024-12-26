@@ -2,7 +2,7 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [ main ]         # Déclenche le workflow sur les push vers la branche main
+    branches: [ main ]             # Déclenche le workflow sur les push vers la branche main
     paths:
       - 'mep_dash/**'               # Se déclenche uniquement si des fichiers dans le dossier mep sont modifiés
 
